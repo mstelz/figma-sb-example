@@ -8,8 +8,9 @@
 # testing
 /coverage
 
-# production
+# build
 /build
+build-storybook.log
 
 # misc
 .DS_Store

@@ -14,6 +14,10 @@ module.exports = {
     "storyStoreV7": true,
   },
   "core": {
-    "builder": "@storybook/builder-webpack5"
+    "builder": 'webpack5',
+    "options": { 
+      "lazyCompilation": true,
+      "fsCache": true, 
+    }
   }
 }
