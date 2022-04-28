@@ -10,10 +10,10 @@ module.exports = {
     "@storybook/preset-create-react-app"
   ],
   framework: "@storybook/react",
-  features: {
-    storyStoreV7: true,
-    buildStoriesJson: true
-  },
+  // features: {
+  //   storyStoreV7: true,
+  //   buildStoriesJson: true
+  // },
   core: {
     builder: "@storybook/builder-webpack5",
   }

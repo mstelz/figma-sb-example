@@ -1,20 +1,29 @@
 import { createTheme } from '@mui/material/styles';
-import data from "../data/tokens.json"
 
-export const defaultTheme = createTheme({
-    palette: {
-        primary: {
-            main: data.Test.primary.value
+export const myTheme = (theme) => {
+    console.log('theme', theme)
+    let muiTheme = createTheme();
+    muiTheme = createTheme(muiTheme, {
+        palette: {
+            primary: {
+                main: theme.Test.primary.value
+            }
         }
-    },
-    components: {
-        MuiButton: {
-            styleOverrides: {
-                contained: {
-                    borderRadius: data.Test.borderRadius.button.value,
-                    fontSize: data.Test.font.body.size.value,
+    });
+    return createTheme(muiTheme, {
+        components: {
+            MuiButton: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: theme.Test.primary.value
+                    },
+                    containedPrimary: {
+                        borderRadius: theme.Test.borderRadius.button.value,
+                        fontSize: theme.Test.font.body.size.value,
+                        backgroundColor: theme.Test.primary.value
+                    }
                 }
             }
         }
-    }
-});
+    })
+};

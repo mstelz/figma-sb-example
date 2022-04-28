@@ -5,10 +5,9 @@ import { Button } from "@mui/material"
 /**
  * Primary UI component for user interaction
  */
-export const MuiButton = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const MuiButton = ({label}) => {
   return (
-    <Button variant="contained">
+    <Button color="primary" variant="contained" >
       {label}
     </Button>
   );
