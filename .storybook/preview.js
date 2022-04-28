@@ -1,15 +1,28 @@
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import data from "../data/tokens.json"
+import { ThemeProvider } from '@mui/material/styles';
+import { defaultTheme } from '../src/theme';
 
-const defaultTheme = createTheme({
-  palette: {
-    primary: data.Test.primary.value
-  }
-}); // or your custom theme
+const getTheme = () => {
+  return defaultTheme
+}
+
+export const globalTypes = {
+  theme: {
+    name: 'Refresh Theme',
+    description: 'Refresh your theme',
+    toolbar: {
+      icon: 'circlehollow',
+      // Array of plain string values or MenuItem shape (see below)
+      items: ['light', 'dark'],
+      // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
+};
 
 const withThemeProvider = (Story, context) => {
+  const theme = getTheme();
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Story {...context} />
     </ThemeProvider>
   );
