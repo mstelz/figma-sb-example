@@ -1,13 +1,7 @@
-import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as Emotion10ThemeProvider } from 'emotion-theming';
+
 import { myTheme } from '../src/theme';
-
-// const getTheme = async () => {
-//   let tokens = await (await fetch('https://raw.githubusercontent.com/mstelz/figma-sb-example/master/data/tokens.json')).json()
-//   let theme = await myTheme(tokens)
-//   console.log('theme', theme)
-//   return theme
-// }
-
 
 export const ct = (theme) => {
     console.log('theme', theme)
@@ -37,22 +31,9 @@ export const ct = (theme) => {
     })
 };
 
-let ayo = createTheme()
-ayo = createTheme(ayo, {palette: {
-  primary: {
-    main: "#000",
-    light: "#FFF"
-  }
-}})
-
 export const loaders = [
   async () => ({
-    theme2: createTheme({palette: {
-      primary: {
-        main: "#000"
-      }
-    }}),
-    theme: myTheme(await (await fetch('https://raw.githubusercontent.com/mstelz/figma-sb-example/master/data/tokens.json')).json()),
+    theme: myTheme(await (await fetch(`https://raw.githubusercontent.com/mstelz/figma-sb-example/master/data/tokens.json?${Math.random()}`)).json()),
   })
 ]
 
@@ -61,13 +42,11 @@ const withThemeProvider = (Story, context) => {
   console.log('context', context)
   console.log(context.loaded.theme)
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={ayo}>
-        {console.log(JSON.stringify(context.loaded.theme.components.MuiButton))}
-        {console.log('render')}
+    <Emotion10ThemeProvider theme={context.loaded.theme}>
+      <ThemeProvider theme={context.loaded.theme}>
         <Story {...context} />
       </ThemeProvider>
-    </StyledEngineProvider>
+    </Emotion10ThemeProvider>
   );
 };
 

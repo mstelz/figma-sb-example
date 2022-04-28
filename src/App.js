@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@mui/material/styles"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { MuiButton } from "./stories/MuiButton"
 
 let ayo = createTheme()
